@@ -53,7 +53,7 @@ const userSchema = new Schema(
       },
 
       /**
-       * Try commenting this function to see that the `this` inside `getResources` will then get type inference.
+       * Try commenting this function to see that the `this` (line 51) inside `getResources` (line 49) will then get type inference.
        */
       async getResourcesV2<
         const TResourceType extends keyof App.Models.UserPopulatePaths,
