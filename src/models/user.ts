@@ -42,33 +42,33 @@ const userSchema = new Schema(
       async isCorrectPassword(password: string) {
         return await bcrypt.compare(password, this.password);
       },
-    },
 
-    /**
-     * Getting the user's resources by query.
-     */
-    async getResources(resourceType: keyof App.Models.UserPopulatePaths) {
-      return (await this.populate<App.Models.UserPopulatePaths>(resourceType))[
-        resourceType
-      ] as App.Models.UserPopulatePaths[typeof resourceType];
-    },
+      /**
+       * Getting the user's resources by query.
+       */
+      async getResources(resourceType: keyof App.Models.UserPopulatePaths) {
+        return (
+          await this.populate<App.Models.UserPopulatePaths>(resourceType)
+        )[resourceType] as App.Models.UserPopulatePaths[typeof resourceType];
+      },
 
-    /**
-     * Getting the user's resources by query.
-     */
-    async getResourcesV2<
-      const TResourceType extends keyof App.Models.UserPopulatePaths,
-    >(resourceType) {
-      return (await this.populate<TResourceType>(resourceType))[
-        resourceType
-      ] as App.Models.UserPopulatePaths[TResourceType];
-    },
+      /**
+       * Getting the user's resources by query.
+       */
+      async getResourcesV2<
+        const TResourceType extends keyof App.Models.UserPopulatePaths,
+      >(resourceType: TResourceType) {
+        return (await this.populate<TResourceType>(resourceType))[
+          resourceType
+        ] as App.Models.UserPopulatePaths[TResourceType];
+      },
 
-    /**
-     * This works.
-     */
-    async thisWorks() {
-      return this.populate();
+      /**
+       * This works.
+       */
+      async thisWorks() {
+        return this.populate();
+      },
     },
   },
 );
