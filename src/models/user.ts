@@ -46,8 +46,6 @@ const userSchema = new Schema(
 
     /**
      * Getting the user's resources by query.
-     *
-     * Working in IDE.
      */
     async getResources(resourceType: keyof App.Models.UserPopulatePaths) {
       return (await this.populate<App.Models.UserPopulatePaths>(resourceType))[
@@ -57,8 +55,6 @@ const userSchema = new Schema(
 
     /**
      * Getting the user's resources by query.
-     *
-     * Not working.
      */
     async getResourcesV2<
       const TResourceType extends keyof App.Models.UserPopulatePaths,
@@ -66,6 +62,13 @@ const userSchema = new Schema(
       return (await this.populate<TResourceType>(resourceType))[
         resourceType
       ] as App.Models.UserPopulatePaths[TResourceType];
+    },
+
+    /**
+     * This works.
+     */
+    async thisWorks() {
+      return this.populate();
     },
   },
 );
