@@ -67,7 +67,7 @@ const userSchema = new Schema(
        * This works.
        */
       async thisWorks() {
-        return this.populate();
+        return this.populate('something');
       },
     },
   },
