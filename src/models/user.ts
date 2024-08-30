@@ -44,7 +44,7 @@ const userSchema = new Schema(
       },
 
       /**
-       * Getting the user's resources by query.
+       * Actual code that I wanted to use, but breaks if I use generic types.
        */
       async getResources(resourceType: keyof App.Models.UserPopulatePaths) {
         return (
@@ -53,7 +53,7 @@ const userSchema = new Schema(
       },
 
       /**
-       * Getting the user's resources by query.
+       * Try commenting this function to see that the `this` inside `getResources` will then get type inference.
        */
       async getResourcesV2<
         const TResourceType extends keyof App.Models.UserPopulatePaths,
